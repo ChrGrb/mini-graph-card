@@ -79,6 +79,7 @@ We recommend looking at the [Example usage section](#example-usage) to understan
 | type ***(required)*** | string |  | v0.0.1 | `custom:mini-graph-card`.
 | entities ***(required)*** | list |  | v0.2.0 | One or more sensor entities in a list, see [entities object](#entities-object) for additional entity options.
 | icon | string |  | v0.0.1 | Set a custom icon from any of the available mdi icons.
+| icon_image | string |  | NEXT_VERSION | Override icon with an image url
 | name | string |  | v0.0.1 | Set a custom name which is displayed beside the icon.
 | unit | string |  | v0.0.1 | Set a custom unit of measurement.
 | tap_action | [action object](#action-object-options) |  | v0.7.0 | Action on click/tap.
@@ -139,6 +140,8 @@ properties of the Entity object detailed in the following table (as per `sensor.
 | y_axis | string |  | If 'secondary', displays using the secondary y-axis on the right.
 | fixed_value | boolean |  | Set to true to graph the entity's current state as a fixed value instead of graphing its state history.
 | smoothing | boolean |  | Override for a flag indicating whether to make graph line smooth.
+| value_multiplier | number | 1 | Set a scale factor to use on the graph's value
+| value_factor | number | 0 | (DEPRECATED) Scale value by order of magnitude (e.g. convert Watts to kilo Watts), use negative value to scale down.
 
 ```yaml
 entities:
@@ -146,6 +149,7 @@ entities:
   - entity: sensor.pressure
     name: Pressure
     show_state: true
+    value_multiplier: -2.1
   - sensor.humidity
 ```
 
